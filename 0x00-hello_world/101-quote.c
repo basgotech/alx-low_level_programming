@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include <unistd.h>
 /**
- * main - print string file
- * return - 1 success
+ * main - Entry point
+ * Return:1
  */
 int main(void)
 {
