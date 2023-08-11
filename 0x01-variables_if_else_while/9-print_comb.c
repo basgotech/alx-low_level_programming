@@ -15,21 +15,18 @@ x = 0;
 
 while (x <= 9)
 {
-	putchar(x + '0');
+putchar(x + '0');
 
-	if (x == 9)
-	{
-		putchar('\n');
-       
-	}
-	else
-	{
-		putchar(',');
-		putchar(' ');
-	}
-	
-
-	x++;
+if (x == 9)
+{
+putchar('\n');
+}
+else
+{
+putchar(',');
+putchar(' ');
+}
+x++;
 }
 
 
