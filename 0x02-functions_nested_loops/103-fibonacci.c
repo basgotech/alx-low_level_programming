@@ -10,7 +10,7 @@ int main(void)
 unsigned long  fib1 = 0;
 unsigned long  fib2 = 1;
 double  total_sum = 0;
-unsigned long  next=1;
+unsigned long  next = 1;
 
 while (fib2 <= 4000000)
 {
