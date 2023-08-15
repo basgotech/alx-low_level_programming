@@ -7,8 +7,8 @@
  */
 int main(void)
 {
-unsigned long first = 1;
-unsigned long second = 2;
+unsigned long first = 0;
+unsigned long second = 1;
 unsigned long next;
 int i;
 
