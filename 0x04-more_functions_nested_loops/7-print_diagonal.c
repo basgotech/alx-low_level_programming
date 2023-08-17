@@ -21,7 +21,10 @@ for (y = 0; y < c; y++)
 {
 for (z = 0; z <= y; z++)
 {
+if (z != 0)
+{
 _putchar(' ');
+}
 }
 _putchar('\\');
 _putchar('\n');
