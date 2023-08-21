@@ -15,14 +15,12 @@ int index_val, len = n;
 
 for (index_val = 0; index_val < len; index_val++)
 {
-if (index_val == len - 1)
-{
 printf("%d", a[index_val]);
-}
-else
-{
-printf("%d ,", a[index_val]);
-}
+if (index_val == len - 1)
+continue;
+
+
+printf(", ");
 }
 printf("\n");
 
