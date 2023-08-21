@@ -18,7 +18,14 @@ len++;
 i++;
 }
 
+if ((len % 2) == 0)
+{
 half = len / 2;
+}
+else
+{
+half = (len + 1) / 2;
+}
 
 for (index_val = half; index_val < len; index_val++)
 {
