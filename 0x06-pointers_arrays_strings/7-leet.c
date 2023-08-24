@@ -1,43 +1,29 @@
 #include "main.h"
 /**
  *  * leet - function that encodes a string into 1337.
- *   * @str: string
+ *   * @s: string
  *   * Return: cap string
  */
 
-char *leet(char *str)
+char *leet(char *s)
 {
 
-int k;
+int i;
 
-for (k = 0; str[k]; k++)
+for (i = 0; s[i] != '\0'; i++)
 {
-if (str[k] == 'a' || str[k] == 'A')
-{
-str[k] = '4';
+while (s[i] == 'a' || s[i] == 'A')
+s[i] = '4';
+while (s[i] == 'e' || s[i] == 'E')
+s[i] = '3';
+while (s[i] == 'o' || s[i] == 'O')
+s[i] = '0';
+while (s[i] == 't' || s[i] == 'T')
+s[i] = '7';
+while (s[i] == 'l' || s[i] == 'L')
+s[i] = '1';
 }
-else if
-(str[k] == 'e' || str[k] == 'E')
-{
-str[k] = '3';
-}
-else if
-(str[k] == 'o' || str[k] == 'O')
-{
-str[k] = '0';
-} else if
-(str[k] == 't' || str[k] == 'T')
-{
-str[k] = '7';
-}
-else if
-(str[k] == 'l' || str[k] == 'L')
-{
-str[k] = '1';
-}
-}
-
-return (str);
+return (s);
 
 }
 
