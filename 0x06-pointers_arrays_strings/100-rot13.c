@@ -9,16 +9,20 @@
 char *rot13(char *str)
 {
 int i;
-char storeh[] = "NOPQRSTUVWXYZABCDEFGHIJKLM";
-char storel[] = "nopqrstuvwxyzabcdefghijklm";
+char lower[] = "abcdefghijklmnopqrstuvwxyz";
+char upper[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-for (i = 0; str[i] != '\0'; i++)
+for (i = 0; str[i]; i++)
 {
-if ((str[i] > 64 && str[i] < 91) || (str[i] > 96 && str[i] < 123))
+if (str[i] >= 'a' && str[i] <= 'z')
 {
-str[i] = (str[i] - 65 > 25) ?
-storel[str[i] - 97] : storeh[str[i] - 65];
+str[i] = lower[(str[i] - 'a' + 13) % 26];
+}
+else if (str[i] >= 'A' && str[i] <= 'Z')
+{
+str[i] = upper[(str[i] - 'A' + 13) % 26];
 }
 }
+
 return (str);
 }
