@@ -6,19 +6,18 @@
 * Return: string rotated
 */
 
-char *rot13(char *s)
-{
-int i;
-char storeh[] = "NOPQRSTUVWXYZABCDEFGHIJKLM";
-char storel[] = "nopqrstuvwxyzabcdefghijklm";
+char *rot13(char *str) {
+  int i;
+  char lower[] = "abcdefghijklmnopqrstuvwxyz";
+  char upper[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-for (i = 0; s[i] != '\0'; i++)
-{
-if ((s[i] > 64 && s[i] < 91) || (s[i] > 96 && s[i] < 123))
-{
-s[i] = (s[i] - 65 > 25) ?
-storel[s[i] - 97] : storeh[s[i] - 65];
-}
-}
-return (s);
+  for (i = 0; str[i]; i++) {
+    if (str[i] >= 'a' && str[i] <= 'z') {
+      str[i] = lower[(str[i] - 'a' + 13) % 26];
+    } else if (str[i] >= 'A' && str[i] <= 'Z') {
+      str[i] = upper[(str[i] - 'A' + 13) % 26];
+    }
+  }
+
+  return str;
 }
