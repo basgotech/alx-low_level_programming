@@ -1,23 +1,23 @@
 /**
- * leet - function that encodes a string into 1337
- * @s: string to encode
- * Return: return ecoded string
+ * leet - encode string to 1337
+ * @s: string
+ * Return: encoded string
  */
-char *leet(char *str)
+char *leet(char *s)
 {
-char *r = str;
+char *r = s;
 char a[] = { 'a', 'e', 'o', 't', 'l' };
 char n[] = { 4, 3, 0, 7, 1 };
 int i = 0;
 
-while (*str)
+while (*s)
 {
 for (i = 0; i < 5; i++)
 {
-if (*str == a[i] || *str == a[i] - 32)
-*str = n[i] + '0';
+if (*s == a[i] || *s == a[i] - 32)
+*s = n[i] + '0';
 }
-str++;
+s++;
 }
 return (r);
 }
