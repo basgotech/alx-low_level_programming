@@ -5,22 +5,24 @@
 * @str: string
 * Return: string rotated
 */
+#include "main.h"
 
-char *rot13(char *str)
-{
-int i;
+/**
+* rot13 - rotate characters 13 places
+* @str: string
+* Return: string rotated
+*/
 
-for (i = 0; str[i]; i++) {
-if (str[i] >= 'a' && str[i] <= 'z')
+char *rot13(char *s)
 {
-str[i] = (str[i] - 'a' + 13) % 26 + 'a';
-}
-else if
-(str[i] >= 'A' && str[i] <= 'Z')
-{
-str[i] = (str[i] - 'A' + 13) % 26 + 'A';
-}
-}
-
-return (str);
+    int i = 0;
+    while (s[i] != '\0')
+    {
+        if ((s[i] >= 'A' && s[i] <= 'M') || (s[i] >= 'a' && s[i] <= 'm'))
+            s[i] += 13;
+        else if ((s[i] >= 'N' && s[i] <= 'Z') || (s[i] >= 'n' && s[i] <= 'z'))
+            s[i] -= 13;
+        i++;
+    }
+    return (s);
 }
