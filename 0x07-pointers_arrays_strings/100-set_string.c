@@ -1,6 +1,7 @@
 #include "main.h"
 /**
- * set_string - redirect.
+ * set_string - a function that sets the-
+ *  value of a pointer to a char.
  * @s: double pointer to address
  * @to: the original pointer
  *
