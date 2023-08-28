@@ -17,6 +17,6 @@ return (&s[i]);
 
 }
 
-return ("");
+return ('\0');
 
 }
