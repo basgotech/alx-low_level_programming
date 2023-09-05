@@ -48,9 +48,5 @@ if (dst != my_null)
 {
 _memcpy(dst, src, len);
 }
-else
-{
-return (my_null);
-}
 return (dst);
 }
