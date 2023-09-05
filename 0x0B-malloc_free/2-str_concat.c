@@ -1,36 +1,6 @@
 #include <stdlib.h>
 #include "main.h"
 
-/**
- * _memcpy -  function that copies memory area.
- * @dest: A pointer to the destination memory block.
- * @src: A pointer to the source memory block.
- * @n: The number of bytes to be copied.
- * Return: will print the contents of the buffer2 array .
- */
-char *_memcpy(char *dest, char *src, unsigned int n)
-{
-unsigned char *dptr = (unsigned char *) dest;
-unsigned char *sptr = (unsigned char *) src;
-unsigned int nn = n;
-while (nn--)
-{
-*dptr++ = *sptr++;
-}
-
-return (dest);
-
-}
-
-/**
- * _strlen - compute length of s
- * @s: store memory address of s
- * Return: length of s
- */
-int _strlen(char *s)
-{
-return ((*s) ? _strlen(++s) + 1 : 0); /* return length of s*/
-}
 
 /**
  * str_concat - the function calculates the length of the concatenated
