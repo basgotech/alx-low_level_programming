@@ -13,43 +13,44 @@ return ((*s) ? _strlen(++s) + 1 : 0); /* return length of s*/
 }
 
 /**
-*_strcpy - used to copy string value
-*@dest: destination of our copied file.
-*@src: source of our copied file
-*Return: coped file returned
-*/
-char *_strcpy(char *dest, char *src)
+ * _memcpy -  function that copies memory area.
+ * @dest: A pointer to the destination memory block.
+ * @src: A pointer to the source memory block.
+ * @n: The number of bytes to be copied.
+ * Return: will print the contents of the buffer2 array .
+ */
+char *_memcpy(char *dest, char *src, unsigned int n)
 {
-
-char *start = dest;
-
-while (*src != '\0')
+unsigned char *dptr = (unsigned char *) dest;
+unsigned char *sptr = (unsigned char *) src;
+unsigned int nn = n;
+while (nn--)
 {
-*dest = *src;
-dest++;
-src++;
+*dptr++ = *sptr++;
 }
-*dest = '\0';
-return (start);
+
+return (dest);
+
 }
 /**
  * _strdup- a pointer to a newly allocated space in memory
- *@str: string
+ *@src: string
  *Return: returns a pointer to a newly allocated space in memory
  */
-char *_strdup(char *str)
+char *_strdup(char *src)
 {
-char *new_str;
 int len;
+char *dst;
 
-len = _strlen(str) + 1;
-new_str = (char *)malloc(len *sizeof(char));
-if (new_str == my_null)
+len = _strlen(src) + 1;
+dst = malloc(len);
+if (dst != my_null)
+{
+_memcpy(dst, src, len);
+}
+else
 {
 return (my_null);
 }
-
-_strcpy(new_str, str);
-
-return (new_str);
+return (dst);
 }
