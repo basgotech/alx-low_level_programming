@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#define my_null ((void *)0)
 
 /**
  * _strlen - compute length of s
@@ -43,9 +44,9 @@ int len;
 
 len = _strlen(str) + 1;
 new_str = (char *)malloc(len *sizeof(char));
-if (new_str == NULL)
+if (new_str == my_null)
 {
-return (NULL);
+return (my_null);
 }
 
 _strcpy(new_str, str);
