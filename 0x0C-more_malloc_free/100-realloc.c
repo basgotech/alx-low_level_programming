@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
-#include <string.h>
+
 /**
  * _memcpy -  function that copies memory area.
  * @dest: A pointer to the destination memory block.
@@ -51,7 +51,7 @@ if (new_ptr == NULL)
 {
 return (NULL);
 }
-memcpy(new_ptr, ptr, old_size);
+_memcpy(new_ptr, ptr, old_size);
 free(ptr);
 return (new_ptr);
 }
