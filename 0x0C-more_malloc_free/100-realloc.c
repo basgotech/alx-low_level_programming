@@ -2,27 +2,6 @@
 #include <stdlib.h>
 
 /**
- * _memcpy -  function that copies memory area.
- * @dest: A pointer to the destination memory block.
- * @src: A pointer to the source memory block.
- * @n: The number of bytes to be copied.
- * Return: will print the contents of the buffer2 array .
- */
-char *_memcpy(char *dest, char *src, unsigned int n)
-{
-unsigned char *dptr = (unsigned char *) dest;
-unsigned char *sptr = (unsigned char *) src;
-unsigned int nn = n;
-while (nn--)
-{
-*dptr++ = *sptr++;
-}
-
-return (dest);
-
-}
-
-/**
  *_realloc-a function that reallocates a memory block using
  * malloc and free
  *@ptr:A pointer to the memory previously allocated
@@ -33,25 +12,26 @@ return (dest);
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-void *new_ptr;
+char *p;
+unsigned int i;
+
+if (ptr == NULL)
+{
+p = malloc(new_size);
+return (p);
+}
 if (new_size == 0)
 {
 free(ptr);
 return (NULL);
 }
-if (ptr == NULL) {
-return (malloc(new_size));
-}
-if (new_size <= old_size)
-{
+if (old_size == new_size)
 return (ptr);
-}
-new_ptr= malloc(new_size);
-if (new_ptr == NULL)
-{
+p = malloc(new_size);
+if (p == NULL)
 return (NULL);
-}
-_memcpy(new_ptr, ptr, old_size);
+for (i = 0; i < old_size && i < new_size; i++)
+p[i] = ((char *)ptr)[i];
 free(ptr);
-return (new_ptr);
+return (p);
 }
