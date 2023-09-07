@@ -1,13 +1,16 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-int is_digit(char *s);
+#include "main.h"
+
+void errors(void);
 int _strlen(char *s);
+int is_digit(char *s);
+
 /**
  * main - multiplies two positive numbers
  * @argc: number of arguments
  * @argv: array of arguments
- * Return: always 0 (Success)
+ * Return: always 0 (on Success)
  */
 int main(int argc, char *argv[])
 {
@@ -16,8 +19,7 @@ int main(int argc, char *argv[])
 
 	s1 = argv[1], s2 = argv[2];
 	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
-		printf("Error\n");
-	    exit(98);
+		errors();
 	len1 = _strlen(s1);
 	len2 = _strlen(s2);
 	len = len1 + len2 + 1;
@@ -54,6 +56,7 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
+
 /**
  * is_digit - checks if a string contains a non-digit char
  * @s: string to be evaluated
@@ -76,6 +79,7 @@ int is_digit(char *s)
 /**
  * _strlen - returns the length of a string
  * @s: string to evaluate
+ *
  * Return: the length of the string
  */
 int _strlen(char *s)
@@ -87,4 +91,13 @@ int _strlen(char *s)
 		i++;
 	}
 	return (i);
+}
+
+/**
+ * errors - handles errors for main
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
 }
