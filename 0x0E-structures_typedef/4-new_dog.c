@@ -1,39 +1,95 @@
-#include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include "dog.h"
 
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
+
 /**
- * new_dog - a function  that creates a new dog
- * @name: element of dog tells name
- * @age: element of dog tells age
- * @owner: element of dog tells owner
- * Return: new dog
+ * new_dog - creates a new dog function
+ * @name: name of the dog
+ * @age: age of the dog
+ * @owner: owner of the dog
+ * Return: return success
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-dog_t *d = malloc(sizeof(dog_t));
-if (d == NULL)
-{
-return (NULL);
+	dog_t *dog;
+	int len1, len2;
+
+	len1 = _strlen(name);
+	len2 = _strlen(owner);
+
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
+		return (NULL);
+
+	dog->name = malloc(sizeof(char) * (len1 + 1));
+	if (dog->name == NULL)
+	{
+		free(dog);
+		return (NULL);
+	}
+	dog->owner = malloc(sizeof(char) * (len2 + 1));
+	if (dog->owner == NULL)
+	{
+		free(dog);
+		free(dog->name);
+		return (NULL);
+	}
+	_strcpy(dog->name, name);
+	_strcpy(dog->owner, owner);
+	dog->age = age;
+
+	return (dog);
 }
 
-d->name = strdup(name);
-if (d->name == NULL)
+
+/**
+ * *_strcpy - copies the string pointed to by src
+ * including the terminating null byte (\0)
+ * to the buffer pointed to by dest
+ * @dest: pointer to the buffer in which we copy the string
+ * @src: string to be copied
+ *
+ * Return: the pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
 {
-free(d);
-return (NULL);
+        int len, i;
+
+        len = 0;
+
+        while (src[len] != '\0')
+        {
+                len++;
+        }
+
+        for (i = 0; i < len; i++)
+        {
+                dest[i] = src[i];
+        }
+        dest[i] = '\0';
+
+        return (dest);
 }
 
-d->age = age;
 
-d->owner = strdup(owner);
-if (d->owner == NULL)
+/**
+ * _strlen - returns the length of a string
+ * @s: string to evaluate
+ *
+ * Return: the length of the string
+ */
+int _strlen(char *s)
 {
-free(d->name);
-free(d);
-return (NULL);
-}
+        int i;
 
-return (d);
+        i = 0;
+
+        while (s[i] != '\0')
+        {
+                i++;
+        }
+
+        return (i);
 }
