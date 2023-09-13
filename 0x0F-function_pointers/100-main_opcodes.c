@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
 	for (index = 0; index < z; index++)
 	{
-		printf("%02hhx", *((char *)main + i));
+		printf("%02hhx", *((char *)main + index));
 		if (index < z - 1)
 			printf(" ");
 		else
