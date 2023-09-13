@@ -21,5 +21,5 @@ printf("%02x ", *(unsigned char *)(main_addr + i));
 
 printf("\n");
 
-return 0;
+return (0);
 }
