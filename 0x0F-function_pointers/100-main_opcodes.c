@@ -2,7 +2,7 @@
 #include<stdlib.h>
 /**
  * main- Entry point
- *@argc: stores the number of command-line arguments 
+ *@argc: stores the number of command-line arguments
  *@argv:  is an array of pointers to arrays of character objects
  * Return: 0 in succes
  */
