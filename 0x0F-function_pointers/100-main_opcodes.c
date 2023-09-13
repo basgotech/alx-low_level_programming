@@ -2,13 +2,13 @@
 #include<stdlib.h>
 /**
  * main- Entry point
- *@argc: the number of parameters.
- *@argv: the parameeters in the case the number ob bytes.
+ *@argc: stores the number of command-line arguments 
+ *@argv:  is an array of pointers to arrays of character objects
  * Return: 0 in succes
  */
 int main(int argc, char *argv[])
 {
-	int i, n;
+	int index, z;
 
 
 	if (argc != 2)
@@ -16,17 +16,17 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	n = atoi(argv[1]);
-	if (n < 0)
+	z = atoi(argv[1]);
+	if (z < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
 
-	for (i = 0; i < n; i++)
+	for (index = 0; index < z; index++)
 	{
 		printf("%02hhx", *((char *)main + i));
-		if (i < n - 1)
+		if (index < z - 1)
 			printf(" ");
 		else
 			printf("\n");
