@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * get_op_func - to operate a all a function 
+ * get_op_func - to operate all function
  * @s: string parameter
  * Return: pointer to operation
  */
