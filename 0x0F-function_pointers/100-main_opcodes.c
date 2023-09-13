@@ -1,25 +1,35 @@
-#include <stdio.h>
-#include <stdlib.h>
-
+#include<stdio.h>
+#include<stdlib.h>
+/**
+ * main- Entry point
+ *@argc: the number of parameters.
+ *@argv: the parameeters in the case the number ob bytes.
+ * Return: 0 in succes
+ */
 int main(int argc, char *argv[])
 {
-int i;
-if (argc != 2)
-{
-printf("Usage: ./100-main_opcodes.c number_of_bytes\n");
-exit(1);
-}
+	int i, n;
 
-int num_bytes = atoi(argv[1]);
 
-void *main_addr = (void *)main;
+	if (argc != 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	n = atoi(argv[1]);
+	if (n < 0)
+	{
+		printf("Error\n");
+		exit(2);
+	}
 
-for (i = 0; i < num_bytes; i++)
-{
-printf("%02x ", *(unsigned char *)(main_addr + i));
-}
-
-printf("\n");
-
-return (0);
+	for (i = 0; i < n; i++)
+	{
+		printf("%02hhx", *((char *)main + i));
+		if (i < n - 1)
+			printf(" ");
+		else
+			printf("\n");
+	}
+	return (0);
 }
