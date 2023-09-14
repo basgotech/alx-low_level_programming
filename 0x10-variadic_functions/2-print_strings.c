@@ -25,15 +25,18 @@ separator = "";
 for (i = 0; i < k; i++)
 {
 const char *string = va_arg(args, const char *);
-if(string == NULL)
-{
-printf("nil");
-}
 if (i == k - 1)
 {
 separator = "";
 }
+if (string == NULL)
+{
+printf("(nil)");
+}
+else
+{
 printf("%s%s", string, separator);
+}
 }
 
 printf("\n");
