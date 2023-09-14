@@ -1,96 +1,52 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
 #include "variadic_functions.h"
 
 /**
- * printf_char - printfs a char from var args
- *
- * @list: va_list to print from
- *
- * Return: void
- */
-void printf_char(va_list list)
-{
-	printf("%c", (char) va_arg(list, int));
-}
-
-/**
- * printf_int - printfs an int from var args
- *
- * @list: va_list to print from
- *
- * Return: void
- */
-void printf_int(va_list list)
-{
-	printf("%d", va_arg(list, int));
-}
-
-/**
- * printf_float - printfs a float from var args
- *
- * @list: va_list to print from
- *
- * Return: void
- */
-void printf_float(va_list list)
-{
-	printf("%f", (float) va_arg(list, double));
-}
-
-/**
- * printf_string - printfs a string from var args
- *
- * @list: va_list to print from
- *
- * Return: void
- */
-void printf_string(va_list list)
-{
-	char *str = va_arg(list, char*);
-
-	while (str != NULL)
-	{
-		printf("%s", str);
-		return;
-	}
-	printf("(nil)");
-}
-
-
-/**
- * print_all - prints various types given a format string for the arguments
- *
- * @format: string containing type information for args
- *
- * Return: void
+ * print_all - prints all the arguments that are passed to it in any format
+ * @format: format of the argument
  */
 void print_all(const char * const format, ...)
 {
-	const char *ptr;
-	va_list list;
-	funckey key[4] = { {printf_char, 'c'}, {printf_int, 'i'},
-			   {printf_float, 'f'}, {printf_string, 's'} };
-	int keyind = 0, notfirst = 0;
+	unsigned int i, j, sep = 0;
+	char *str;
+	char c_args[] = "cifs";
+	va_list args;
 
-	ptr = format;
-	va_start(list, format);
-	while (format != NULL && *ptr)
+	va_start(args, format);
+	i = 0;
+	while (format && format[i])
 	{
-		if (key[keyind].spec == *ptr)
+		j = 0;
+		while (c_args[j])
 		{
-			if (notfirst)
+			if (format[i] == c_args[j] && sep)
+			{
 				printf(", ");
-			notfirst = 1;
-			key[keyind].f(list);
-			ptr++;
-			keyind = -1;
+				break;
+			} j++;
 		}
-		keyind++;
-		ptr += keyind / 4;
-		keyind %= 4;
-	}
-	printf("\n");
-
-	va_end(list);
+		switch (format[i])
+		{
+			case 'c':
+				printf("%c", va_arg(args, int)), sep = 1;
+				break;
+			case 'i':
+				printf("%d", va_arg(args, int)), sep = 1;
+				break;
+			case 'f':
+				printf("%f", va_arg(args, double)), sep = 1;
+				break;
+			case 's':
+				str = va_arg(args, char *), sep = 1;
+				if (!str)
+				{
+					printf("(nil)");
+					break;
+				}
+				printf("%s", str);
+				break;
+		} i++;
+	} va_end(args), printf("\n");
 }
