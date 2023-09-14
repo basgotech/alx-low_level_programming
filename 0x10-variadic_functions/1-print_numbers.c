@@ -19,6 +19,10 @@ va_start(args, n);
 
 k = (unsigned int)n;
 
+if (separator == NULL)
+{
+separator = "";
+}
 for (i = 0; i < k; i++)
 {
 int number = va_arg(args, int);
