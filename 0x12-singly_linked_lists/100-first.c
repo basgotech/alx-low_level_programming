@@ -8,6 +8,6 @@ void excute_before_main(void) __attribute__((constructor));
  */
 void excute_before_main(void)
 {
-char str1[] = "You're beat!";
-printf("%s\nand yet, you must allow,\nI bore my house upon my back!\n", str1);
+printf("You're beat! and yet, you must allow,\n");
+printf("I bore my house upon my back!\n");
 }
