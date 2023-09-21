@@ -1,5 +1,6 @@
 #include "lists.h"
 
+int _strlen(char *s);
 /**
  * add_node_end - Adds a new node at the beginning of a list_t list.
  * @head: A pointer to the head of the list.
@@ -21,7 +22,7 @@ if (newNode->str == NULL)
 free(newNode);
 return (NULL);
 }
-newNode->len = strlen(newNode->str);
+newNode->len = _strlen(newNode->str);
 newNode->next = NULL;
 
 if (*head == NULL)
@@ -35,4 +36,15 @@ currentNode = currentNode->next;
 
 currentNode->next = newNode;
 return (newNode);
+}
+
+/**
+ * _strlen - compute length of s
+ * @s: store memory address of s
+ * Return: length of s
+ */
+
+int _strlen(char *s)
+{
+return ((*s) ? _strlen(++s) + 1 : 0); /* return length of s*/
 }
