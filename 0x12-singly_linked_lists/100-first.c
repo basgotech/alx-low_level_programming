@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "lists.h"
 void excute_before_main(void) __attribute__((constructor));
 
 /**
