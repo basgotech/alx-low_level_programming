@@ -18,7 +18,7 @@ return;
 
 currentList = *head;
 
-while (currentList != NULLi)
+while (currentList != NULL)
 {
 nextList = currentList->next;
 free(currentList);
