@@ -1,54 +1,43 @@
 #include "lists.h"
 
-size_t free_listint_safe(listint_t **h) {
+/**
+ * free_listint_safe - safely frees a linked list
+ * acciounting for loops.
+ * @h: A pointer to a pointer to the head of the linked list
+ * Return: The number of nodes freed.
+ */
+size_t free_listint_safe(listint_t **h)
+{
+size_t length_count = 0;
+int get_d;
+listint_t *t;
 
-
-listint_t *slow = *h;
-listint_t *fast = *h;
-listint_t *loop_start;
-size_t node_count = 0;
-
-
-if (h == NULL || *h == NULL) {
-        return (0);
+if (!h || !*h)
+{
+return (0);
 }
 
-while (fast != NULL && fast->next != NULL)
+while (*h)
 {
-slow = slow->next;
-fast = fast->next->next;
-
-if (slow == fast)
+get_d = *h - (*h)->next;
+if (get_d > 0)
 {
-
-slow = *h;
-while (slow != fast)
-{
-slow = slow->next;
-fast = fast->next;
+t = (*h)->next;
+free(*h);
+*h = t;
+length_count++;
 }
-
-loop_start = slow;
-do
+else
 {
-listint_t *temp = slow->next;
-free(slow);
-slow = temp;
-node_count++;
-} while (slow != loop_start);
+free(*h);
+*h = NULL;
+length_count++;
+break;
+}
+}
 
 *h = NULL;
 
-return (node_count);
-}
-}
+return (length_count);
 
-while (*h != NULL) {
-listint_t *temp = (*h)->next;
-free(*h);
-*h = temp;
-node_count++;
-}
-
-return (node_count);
 }
