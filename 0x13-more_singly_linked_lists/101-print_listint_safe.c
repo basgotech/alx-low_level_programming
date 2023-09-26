@@ -6,35 +6,36 @@
  * @head: A pointer to the head of the linked list.
  * Return: The number of nodes in the list.
  */
-size_t print_listint_safe(const listint_t *head)
-{
-const listint_t *slowSave, *fastSave;
+size_t print_listint_safe(const listint_t *head) {
+    const listint_t *slow;
+    const listint_t *fast;
+    size_t node_count;
+    node_count = 0;
+    slow = head;
+    fast = head;
 
-size_t length;
+    while (fast != NULL && fast->next != NULL) {
+        printf("%d\n", slow->n);
+        node_count++;
+        slow = slow->next;
+        fast = fast->next->next;
 
-slowSave = head;
-fastSave = head;
-length = 0;
 
-while (fastSave != NULL && fastSave->next != NULL)
-{
-printf("[%p] %d\n", (void *)slowSave, slowSave->n);
-length++;
-slowSave = slowSave->next;
-fastSave = fastSave->next->next;
+        if (slow == fast) {
+            printf("%d\n", slow->n);
+            node_count++;
 
-if (slowSave == fastSave)
-{
-printf("-> [%p] %d\n", (void *)slowSave, slowSave->n);
-exit(98);
-}
-}
 
-if (fastSave != NULL)
-{
-printf("[%p] %d\n", (void *)slowSave, slowSave->n);
-length++;
-}
+            exit(98);
+        }
+    }
 
-return (length);
+
+    while (slow != NULL) {
+        printf("%d\n", slow->n);
+        node_count++;
+        slow = slow->next;
+    }
+
+    return node_count;
 }
