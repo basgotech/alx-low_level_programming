@@ -92,7 +92,7 @@ void print_data_elf(unsigned char *e_ident)
 }
 
 /**
- * print_version_of - Prints the version of an ELF header.
+ * print_version_of_elf - Prints the version of an ELF header.
  * @e_ident: A pointer to an array containing the ELF version.
  */
 void print_version_of_elf(unsigned char *e_ident)
@@ -201,7 +201,7 @@ void print_type_elf(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- * print_entry - Prints the entry point of an ELF header.
+ * print_entry_elf- Prints the entry point of an ELF header.
  * @e_entry: The address of the ELF entry point.
  * @e_ident: A pointer to an array containing the ELF class.
  */
