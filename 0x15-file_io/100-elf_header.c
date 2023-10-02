@@ -62,7 +62,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	print_entry_elf(header_reader->e_entry, header_reader->e_ident);
 
 	free(header_reader);
-	close_elf(fd);
+	close_elf_file(fd);
 	return (0);
 }
 
@@ -109,6 +109,29 @@ void print_magic_elf_file(unsigned char *e_ident)
 	}
 }
 
+/**
+ * print_class_elf - Prints the class of an ELF header.
+ * @e_ident: A pointer to an array containing the ELF class.
+ */
+void print_class_elf(unsigned char *e_ident)
+{
+	printf("  Class:                             ");
+
+	switch (e_ident[EI_CLASS])
+	{
+	case ELFCLASSNONE:
+		printf("none\n");
+		break;
+	case ELFCLASS32:
+		printf("ELF32\n");
+		break;
+	case ELFCLASS64:
+		printf("ELF64\n");
+		break;
+	default:
+		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
+}
 /**
  * print_data_elf - Prints the data of an ELF header.
  * @e_ident: A pointer to an array containing the ELF class.
