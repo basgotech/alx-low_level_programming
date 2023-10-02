@@ -1,5 +1,7 @@
 #include "main.h"
 
+void error_file_handling(int flf, int flt, char *argv[]);
+
 /**
  * main - check the code for Holberton School students.
  * @argc: number of arguments.
