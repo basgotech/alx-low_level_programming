@@ -1,7 +1,5 @@
 #include "main.h"
-#include <stdio.h>
 
-void error_file_handling(int flf, int flt, char *argv[]);
 /**
  * main - check the code for Holberton School students.
  * @argc: number of arguments.
@@ -20,10 +18,14 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
+	/* open a file with location */
 	flf = open(argv[1], O_RDONLY);
+
+	/* new file copied */
 	flt = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	error_file_handling(flf, flt, argv);
 
+	/* make less system calls */
 	onlyread = 1024;
 	while (onlyread == 1024)
 	{
@@ -56,7 +58,6 @@ int main(int argc, char *argv[])
  * @flf: file_from.
  * @flt: file_to.
  * @argv: arguments vector.
- * Return: no return.
  */
 void error_file_handling(int flf, int flt, char *argv[])
 {
