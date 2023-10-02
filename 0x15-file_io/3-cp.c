@@ -29,10 +29,10 @@ int main(int argc, char *argv[])
 	{
 		onlyread = read(flf, buf_size, 1024);
 		if (onlyread == -1)
-			error_file(-1, 0, argv);
+			error_file_handling(-1, 0, argv);
 		wrr = write(flt, buf_size, onlyread);
 		if (wrr == -1)
-			error_file(0, -1, argv);
+			error_file_handling(0, -1, argv);
 	}
 
 	erc = close(flf);
