@@ -14,9 +14,9 @@
  */
 typedef struct hash_node_s
 {
-    char *key;
-    char *value;
-    struct hash_node_s *next;
+char *key;
+char *value;
+struct hash_node_s *next;
 } hash_node_t;
 
 /**
@@ -28,8 +28,8 @@ typedef struct hash_node_s
  */
 typedef struct hash_table_s
 {
-    unsigned long int size;
-    hash_node_t **array;
+unsigned long int size;
+hash_node_t **array;
 } hash_table_t;
 
 hash_table_t *hash_table_create(unsigned long int size);
@@ -51,11 +51,11 @@ void hash_table_delete(hash_table_t *ht);
  */
 typedef struct hash_node_sort
 {
-    char *key;
-    char *value;
-    struct hash_node_sort *next;
-    struct hash_node_sort *sprev;
-    struct hash_node_sort *snext;
+char *key;
+char *value;
+struct hash_node_sort *next;
+struct hash_node_sort *sprev;
+struct hash_node_sort *snext;
 } hash_node_sort;
 
 /**
@@ -69,10 +69,10 @@ typedef struct hash_node_sort
  */
 typedef struct hash_table_sort
 {
-    unsigned long int size;
-    hash_table_sort **array;
-    hash_table_sort *shead;
-    hash_table_sort *stail;
+unsigned long int size;
+hash_table_sort **array;
+hash_table_sort *shead;
+hash_table_sort *stail;
 } hash_table_sort;
 
 hash_table_sort *shash_table_create(unsigned long int size);
