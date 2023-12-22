@@ -14,7 +14,7 @@ for (x = 0; x < ht->size; x++)
 if (ht->array[x] != NULL)
 {
 station = ht->array[x];
-while (node != NULL)
+while (station != NULL)
 {
 temp_file = station->next;
 free(station->key);
