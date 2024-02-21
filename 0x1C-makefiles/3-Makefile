@@ -1,0 +1,43 @@
+# Author Basliel Tegegn
+
+# Compiler
+CC = gcc
+
+# Source files
+SRC = main.c file1.c file2.c
+
+# Object files
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+NAME = school
+
+# Program to delete files
+RM = rm -f
+
+# Compiler flags
+CFLAGS = -Wall -g
+
+# Target: all (default target)
+all: $(NAME)
+
+# Target: school
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+# Rule to compile source files into object files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	$(RM) *~* $(NAME)
+
+oclean:
+	$(RM) $(OBJ)
+
+# Target: flc 
+flc: clean oclean
+
+re: flc all
+
+.PHONY: clean oclean flc re
