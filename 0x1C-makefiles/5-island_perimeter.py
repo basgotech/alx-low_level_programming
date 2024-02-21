@@ -44,7 +44,7 @@ def island_perimeter(grid):
     for k in range(len(grid)):
         for l in range(len(grid[k])):
             # Check if the cell is part of the island
-            if grid[l][l]:
+            if grid[k][l]:
                 # Add the number of water neighbors to the perimeter
                 qual += num_water_neighbors(grid, k, l)
 
