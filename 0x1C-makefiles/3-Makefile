@@ -1,10 +1,10 @@
-# Author Basliel Tegegn
+# Makefile for building the 'school' executable
 
 # Compiler
 CC = gcc
 
 # Source files
-SRC = main.c file1.c file2.c
+SRC = main.c file1.c file2.c  # Add your source files here
 
 # Object files
 OBJ = $(SRC:.c=.o)
@@ -16,12 +16,12 @@ NAME = school
 RM = rm -f
 
 # Compiler flags
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g  # You can add more flags if needed
 
 # Target: all (default target)
 all: $(NAME)
 
-# Target: school
+# Target: school (build the executable)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
@@ -29,15 +29,19 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Target: clean (delete temporary files and the executable)
 clean:
 	$(RM) *~* $(NAME)
 
+# Target: oclean (delete object files)
 oclean:
 	$(RM) $(OBJ)
 
-# Target: flc 
-flc: clean oclean
+# Target: fclean (delete temporary files, the executable, and object files)
+fclean: clean oclean
 
-re: flc all
+# Target: re (force recompilation of all source files)
+re: fclean all
 
-.PHONY: clean oclean flc re
+# Ensure that clean, oclean, fclean, and re don't fail even if the files don't exist
+.PHONY: clean oclean fclean re
