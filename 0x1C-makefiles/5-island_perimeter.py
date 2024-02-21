@@ -15,7 +15,6 @@ def num_water_neighbors(grid, row, col):
     """
     num_col = 0
 
-    # Check for water neighbors in the four directions
     if row <= 0 or not grid[row - 1][col]:
         num_col += 1
     if col <= 0 or not grid[row][col - 1]:
@@ -40,12 +39,10 @@ def island_perimeter(grid):
     """
     qual = 0
 
-    # Iterate through each cell in the grid
     for k in range(len(grid)):
         for l in range(len(grid[k])):
-            # Check if the cell is part of the island
+		
             if grid[k][l]:
-                # Add the number of water neighbors to the perimeter
                 qual += num_water_neighbors(grid, k, l)
 
     return qual
