@@ -1,47 +1,40 @@
-# Compiler
+# Variables
 CC = gcc
-
-# Source files
-SRC = main.c school.c  # Add your source files here
-
-# Object files
+SRC = *.c
 OBJ = $(SRC:.c=.o)
-
-# Executable name
 NAME = school
-
-# Program to delete files
 RM = rm -f
 
-# Compiler flags for better code quality and warnings
-CFLAGS = -Wall -Werror -Wextra -pedantic
+# Phony targets
+.PHONY: all clean oclean fclean re
 
-# Target: all (default target)
+# Main target - only compile necessary files
 all: $(NAME)
 
-# Target: school (build the executable)
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $@
+	$(CC) $(CFLAGS) -o $(NAME) $^
 
-# Target: clean (delete temporary files and the executable)
+# Cleaning targets
 clean:
-	$(RM) *~ $(NAME)
+	$(RM) $(NAME) *.log *.err
 
-# Target: oclean (delete object files)
 oclean:
 	$(RM) $(OBJ)
 
-# Target: fclean (delete temporary files, the executable, and object files)
-fclean: clean oclean
+fclean: clean
+	$(RM) *.log *.err
 
-# Target: re (force recompilation of all source files)
-re: oclean all
+# Force rebuild all
+re: fclean all
 
-# Rule to compile source files into object files
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+# Check for missing header
+m.h:
+	@echo "Missing header file m.h. Please add it before continuing."
+	@exit 1
 
-# Check if m.h is present
-ifeq ($(wildcard m.h),)
-    $(error m.h not found)
-endif
+# Implicit rules using pattern rules
+%.o: %.c m.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Ignore files with the same name as targets
+.PRECIOUS: clean oclean fclean re m.h
