@@ -1,0 +1,28 @@
+# Name of the executable
+EXECNAME = school
+
+# No additional variables used
+
+# Build the executable (all rule)
+all: $(EXECNAME)
+
+# Compile the source files (implicit rule)
+$(EXECNAME): %.o
+	@echo Compiling $@
+	$(CC) -o $@ $< $(CFLAGS)
+
+# Create object files from source files (implicit rule)
+%.o: %.c
+	@echo Generating object file for $<
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+# Cleaning rule
+clean:
+	@echo Cleaning up...
+	rm -rf $(EXECNAME) *.o
+
+# Include compiler flags (optional)
+CFLAGS = -Wall -std=c11
+
+# EOF
+
