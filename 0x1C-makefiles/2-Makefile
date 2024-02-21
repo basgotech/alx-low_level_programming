@@ -1,0 +1,30 @@
+# Author Basliel Tegegn
+# Compiler of Makefile
+CC = gcc
+
+# Source files to exe
+SRC = main.c school.c
+
+# Object files coll
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+NAME = school
+
+# Compiler flags
+CFLAGS = -Wall -g 
+
+# Target: all (default target)
+all: $(NAME)
+
+# Target: school (executable)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+# Rule to compile source files into object files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Target: clean (remove object files and executable)
+clean:
+	rm -f $(OBJ) $(NAME)
