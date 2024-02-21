@@ -1,40 +1,14 @@
-# Variables
 CC = gcc
-SRC = *.c
+SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
-RM = rm -f
-
-# Phony targets
+CFLAGS = -Wall -Werror -Wextra -pedantic
 .PHONY: all clean oclean fclean re
-
-# Main target - only compile necessary files
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $^
-
-# Cleaning targets
+all: m.h $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 clean:
-	$(RM) $(NAME) *.log *.err
-
+	$(RM) *~ $(NAME)
 oclean:
 	$(RM) $(OBJ)
-
-fclean: clean
-	$(RM) *.log *.err
-
-# Force rebuild all
-re: fclean all
-
-# Check for missing header
-m.h:
-	@echo "Missing header file m.h. Please add it before continuing."
-	@exit 1
-
-# Implicit rules using pattern rules
-%.o: %.c m.h
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-# Ignore files with the same name as targets
-.PRECIOUS: clean oclean fclean re m.h
+fclean: clean oclean
+re: oclean all
