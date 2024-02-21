@@ -1,14 +1,31 @@
+# Compiler and flags
 CC = gcc
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Source files and object files
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
+
+# Target executable name
 NAME = school
-CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Phony targets
 .PHONY: all clean oclean fclean re
+
+# Default target
 all: m.h $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
+
+# Clean up unnecessary files
 clean:
 	$(RM) *~ $(NAME)
+
+# Remove object files
 oclean:
 	$(RM) $(OBJ)
+
+# Remove all generated files
 fclean: clean oclean
+
+# Rebuild the project
 re: oclean all
