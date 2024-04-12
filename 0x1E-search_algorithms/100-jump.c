@@ -18,8 +18,7 @@ return (-1);
 mid = (int)sqrt((double)size);
 x = 0;
 las_ch = index_val = 0;
-do
-{
+do {
 printf("Value checked array[%d] = [%d]\n", index_val, array[index_val]);
 if (array[index_val] == value)
 {
@@ -27,9 +26,8 @@ return (index_val);
 }
 x++;
 las_ch = index_val;
-index_val = x * mid;
-}
-while (index_val < (int)size && array[index_val] < value);
+index_val = x *mid;
+} while (index_val < (int)size && array[index_val] < value);
 printf("Value found between indexes [%d] and [%d]\n", las_ch, index_val);
 for (; las_ch <= index_val && las_ch < (int)size; las_ch++)
 {
