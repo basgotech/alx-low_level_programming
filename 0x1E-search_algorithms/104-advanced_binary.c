@@ -4,7 +4,7 @@
  * recurs_search - searches for a value in an array
  * @array: input arr
  * @size: size of the arr
- * @value: value to search
+ * @val: value to search
  * Return: index
  */
 int recurs_search(int *array, size_t size, int val)
